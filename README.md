@@ -5,6 +5,7 @@ I've been trying to find a method of creating a point cloud mesh for my [Geometr
 Current features:
 - Growing/Shrinking - tree will grow of point out of scope is added and shrink when root node has only one child remaining.
 - Insertion/Removal - done by reference or ID, Safe Insertion/Removal checks if tree should shrink or grow.
+- When inserting a new node will be split until each point is in different node OR leaf node was created. The implementation is like a 'bucket' octree, where Inner nodes are used to transport points into Leaf nodes ('buckets').
 - Tree origin is adjusted if root has no children and a new object has been added to the tree.
 - InnerNode/LeadNode and Points object pools - stacks of objects to reuse. Instead of deleting objects and creating new ones they are now stored for the future use.
 - Radius search - returns a list of points in a given radius. It starts by checking if a given child origin lies inside an area box, and then each point inside it is checked against the radius.
